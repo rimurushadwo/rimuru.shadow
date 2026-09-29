@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Projetos - Rimuru & Princesa Izabel</title>
+    <!-- Tailwind CSS para estilização rápida e moderna -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Fonte estilo Anime/Futurista -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slime: {
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        },
+                        rimuru: {
+                            dark: '#0b132b',
+                            card: '#1c2541',
+                            gold: '#ffb703'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        anime: ['Orbitron', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b132b;
+            background-image: radial-gradient(circle at 50% 50%, #1c2541 0%, #0b132b 100%);
+        }
+        .slime-glow {
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+        }
+        .gold-border {
+            border: 1px solid rgba(255, 183, 3, 0.3);
+        }
+    </style>
+</head>
+<body class="text-slate-100 font-sans min-h-screen flex flex-col">
+
+    <!-- HEADER / NAV -->
+    <header class="border-b border-slime-600/30 bg-rimuru-dark/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <!-- Slime Avatar Placeholder -->
+                <div class="w-12 h-12 bg-gradient-to-br from-slime-400 to-slime-600 rounded-full flex items-center justify-center slime-glow animate-pulse">
+                    <span class="text-2xl">🔹</span>
+                </div>
+                <div>
+                    <h1 class="font-anime text-xl font-bold tracking-wider text-slime-400">RIMURU PROJECT</h1>
+                    <p class="text-xs text-slate-400">C.E. Cívico-Militar Princesa Izabel</p>
+                </div>
+            </div>
+            
+            <!-- Status de Login Simulado -->
+            <div id="login-area" class="flex items-center gap-3 bg-rimuru-card px-4 py-2 rounded-lg gold-border">
+                <span class="w-2.5 h-2.5 bg-red-500 rounded-full animate-ping"></span>
+                <span class="text-sm text-slate-300">Não autenticado</span>
+                <button onclick="abrirModal()" class="bg-slime-500 hover:bg-slime-600 text-rimuru-dark font-bold px-3 py-1 rounded text-xs transition-colors">
+                    Fazer Login
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8">
+        
+        <!-- INTRO HERO -->
+        <section class="mb-12 bg-rimuru-card/50 rounded-2xl p-6 md:p-8 border border-slime-500/20 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="max-w-2xl">
+                <span class="bg-slime-500/10 text-slime-400 border border-slime-400/30 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                    Grande Floresta de Jura - Escolar
+                </span>
+                <h2 class="text-3xl md:text-4xl font-anime font-bold mt-3 mb-4 text-white">
+                    Compartilhe sua <span class="text-slime-400">Evolução</span> e Projetos!
+                </h2>
+                <p class="text-slate-300 leading-relaxed">
+                    Bem-vindo ao hub oficial de projetos. Utilize sua credencial institucional <code class="text-rimuru-gold bg-rimuru-dark px-1.5 py-0.5 rounded font-mono">@escola.pr.gov.br</code> para liberar seu acesso à Tempest.
+                </p>
+            </div>
+            <div class="bg-rimuru-dark p-4 rounded-xl border border-rimuru-gold/20 min-w-[250px] text-xs space-y-2">
+                <div class="text-rimuru-gold font-bold font-anime uppercase tracking-wider border-b border-rimuru-gold/20 pb-1">Hierarquia de Acesso</div>
+                <div class="flex justify-between"><span>🛡️ Professores:</span> <span class="text-emerald-400 font-bold">Acesso Livre Geral</span></div>
+                <div class="flex justify-between"><span>👤 Alunos:</span> <span class="text-slime-400">Acesso Restrito à Turma</span></div>
+            </div>
+        </section>
+
+        <!-- SELEÇÃO DE TURMAS -->
+        <section>
+            <h3 class="text-xl font-anime font-bold mb-6 text-rimuru-gold flex items-center gap-2">
+                <span>🔮</span> Selecione a sua Guilda / Turma
+            </h3>
+
+            <!-- Bloco 8º Ano -->
+            <div class="mb-8">
+                <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-3 border-l-2 border-slime-500 pl-2">Ensino Fundamental - 8º Anos</h4>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    <div onclick="verTurma('8°A')" class="group bg-rimuru-card hover:bg-slime-900/40 p-4 rounded-xl border border-slate-700 hover:border-slime-400 cursor-pointer transition-all duration-300">
+                        <div class="text-2xl font-bold font-anime group-hover:text-slime-400">8° A</div>
+                        <div class="text-xs text-slate-400 mt-1">Clique para ver projetos</div>
+                    </div>
+                    <div onclick="verTurma('8°B')" class="group bg-rimuru-card hover:bg-slime-900/40 p-4 rounded-xl border border-slate-700 hover:border-slime-400 cursor-pointer transition-all duration-300">
+                        <div class="text-2xl font-bold font-anime group-hover:text-slime-400">8° B</div>
+                        <div class="text-xs text-slate-400 mt-1">Clique para ver projetos</div>
+                    </div>
+                    <div onclick="verTurma('8°C')" class="group bg-rimuru-card hover:bg-slime-900/40 p-4 rounded-xl border border-slate-700 hover:border-slime-400 cursor-pointer transition-all duration-300">
+                        <div class="text-2xl font-bold font-anime group-hover:text-slime-400">8° C</div>
+                        <div class="text-xs text-slate-400 mt-1">Clique para ver projetos</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloco 9º Ano -->
+            <div class="mb-8">
+                <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-3 border-l-2 border-slime-500 pl-2">Ensino Fundamental - 9º Anos</h4>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    <div onclick="verTurma('9°A')" class="group bg-rimuru-card hover:bg-slime-900/40 p-4 rounded-xl border border-slate-700 hover:border-slime-400 cursor-pointer transition-all duration-300">
+                        <div class="text-2xl font-bold font-anime group-hover:text-slime-400">9° A</div>
+                        <div class="text-xs text-slate-400 mt-1">Clique para ver projetos</div>
+                    </div>
+                    <div onclick="verTurma('9°B')" class="group bg-rimuru-card hover:bg-slime-900/40 p-4 rounded-xl border border-slate-700 hover:border-slime-400 cursor-pointer transition-all duration-300">
+                        <div class="text-2xl font-bold font-anime group-hover:text-slime-400">9° B</div>
+                        <div class="text-xs text-slate-400 mt-1">Clique para ver projetos</div>
+                    </div>
+                    <div onclick="verTurma('9°C')" class="group bg-rimuru-card hover:bg-slime-900/40 p-4 rounded-xl border border-slate-700 hover:border-slime-400 cursor-pointer transition-all duration-300">
+                        <div class="text-2xl font-bold font-anime group-hover:text-slime-400">9° C</div>
+                        <div class="text-xs text-slate-400 mt-1">Clique para ver projetos</div>
+                    </div>
+                    <div onclick="verTurma('9°D')" class="group bg-rimuru-card hover:bg-slime-900/40 p-4 rounded-xl border border-slate-700 hover:border-slime-400 cursor-pointer transition-all duration-300">
+                        <div class="text-2xl font-bold font-anime group-hover:text-slime-400">9° D</div>
+                        <div class="text-xs text-slate-400 mt-1">Clique para ver projetos</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloco 1º Ano Médio -->
+            <div class="mb-8">
+                <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-3 border-l-2 border-rimuru-gold pl-2">Ensino Médio - 1º Anos</h4>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    <div onclick="verTurma('1°A')" class="group bg-rimuru-card hover:bg-slime-900/40 p-4 rounded-xl border border-slate-700 hover:border-slime-400 cursor-pointer transition-all duration-300">
+                        <div class="text-2xl font-bold font-anime group-hover:text-slime-400">1° A</div>
+                        <div class="text-xs text-slate-400 mt-1">Clique para ver projetos</div>
+                    </div>
+                    <div onclick="verTurma('1°B')" class="group bg-rimuru-card hover:bg-slime-900/40 p-4 rounded-xl border border-slate-700 hover:border-slime-400 cursor-pointer transition-all duration-300">
+                        <div class="text-2xl font-bold font-anime group-hover:text-slime-400">1° B</div>
+                        <div class="text-xs text-slate-400 mt-1">Clique para ver projetos</div>
+                    </div>
+                    <div onclick="verTurma('1°C')" class="group bg-rimuru-card hover:bg-slime-900/40 p-4 rounded-xl border border-slate-700 hover:border-slime-400 cursor-pointer transition-all duration-300">
+                        <div class="text-2xl font-bold font-anime group-hover:text-slime-400">1° C</div>
+                        <div class="text-xs text-slate-400 mt-1">Clique para ver projetos</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloco 2º Ano Médio -->
+            <div class="mb-8">
+                <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-3 border-l-2 border-rimuru-gold pl-2">Ensino Médio - 2º Anos</h4>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    <div onclick="verTurma('2°A')" class="group bg-rimuru-card hover:bg-slime-900/40 p-4 rounded-xl border border-slate-700 hover:border-slime-400 cursor-pointer transition-all duration-300">
+                        <div class="text-2xl font-bold font-anime group-hover:text-slime-400">2° A</div>
+                        <div class="text-xs text-slate-400 mt-1">Clique para ver projetos</div>
+                    </div>
+                    <div onclick="verTurma('2°B')" class="group bg-rimuru-card hover:bg-slime-900/40 p-4 rounded-xl border border-slate-700 hover:border-slime-400 cursor-pointer transition-all duration-300">
+                        <div class="text-2xl font-bold font-anime group-hover:text-slime-400">2° B</div>
+                        <div class="text-xs text-slate-400 mt-1">Clique para ver projetos</div>
+                    </div>
+                    <div onclick="verTurma('2°C')" class="group bg-rimuru-card hover:bg-slime-900/40 p-4 rounded-xl border border-slate-700 hover:border-slime-400 cursor-pointer transition-all duration-300">
+                        <div class="text-2xl font-bold font-anime group-hover:text-slime-400">2° C</div>
+                        <div class="text-xs text-slate-400 mt-1">Clique para ver projetos</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE REQUISITO DE PROJETO (SIMULADO) -->
+        <section id="area-projeto" class="hidden mt-12 p-6 bg-rimuru-card rounded-xl border border-slime-500 slime-glow">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-anime font-bold text-white flex items-center gap-2">
+                    📁 Projetos da Turma: <span id="nome-turma-selecionada" class="text-slime-400"></span>
+                </h3>
+                <button onclick="fecharTurma()" class="text-slate-400 hover:text-white">&times; Fechar</button>
+            </div>
+            
+            <div id="status-permissao" class="p-3 mb-4 rounded bg-slate-900 border border-slate-700 text-xs">
+                <!-- Preenchido via JS -->
+            </div>
+
+            <!-- Formulário de Envio (Apenas se aluno da turma ou professor) -->
+            <div id="form-envio" class="hidden bg-slate-900/60 p-4 rounded-lg border border-dashed border-slate-700 mb-6">
+                <h4 class="text-sm font-bold mb-3 text-rimuru-gold">➕ Enviar Novo Projeto</h4>
+                <form onsubmit="submeterProjeto(event)" class="space-y-3 text-sm">
+                    <div>
+                        <label class="block text-xs font-bold mb-1">Título do Projeto:</label>
+                        <input type="text" required id="proj-titulo" class="w-full bg-rimuru-dark border border-slate-700 p-2 rounded text-white focus:outline-none focus:border-slime-400">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold mb-1">Descrição/Resumo:</label>
+                        <textarea required id="proj-desc" rows="2" class="w-full bg-rimuru-dark border border-slate-700 p-2 rounded text-white focus:outline-none focus:border-slime-400"></textarea>
+                    </div>
+                    <button type="submit" class="bg-gradient-to-r from-slime-500 to-slime-600 text-rimuru-dark font-bold px-4 py-2 rounded shadow hover:brightness-110 transition-all">
+                        Publicar na Linha do Tempo
+                    </button>
+                </form>
+            </div>
+
+            <!-- Feed de Projetos -->
+            <div class="space-y-4">
+                <div class="text-xs font-bold text-slate-400 tracking-wider">Feed de Entregas:</div>
+                <div id="lista-projetos" class="space-y-3">
+                    <!-- Dinâmico -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL DE LOGIN SIMULADO -->
+    <div id="login-modal" class="fixed inset-0 bg-rimuru-dark/80 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+        <div class="bg-rimuru-card max-w-md w-full p-6 rounded-2xl gold-border slime-glow relative">
+            <button onclick="fecharModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">&times;</button>
+            <h3 class="text-lg font-anime font-bold text-white mb-2">Autenticação Tempest</h3>
+            <p class="text-xs text-slate-400 mb-4">Entre usando suas credenciais da Secretaria de Educação do Paraná.</p>
+            
+            <form onsubmit="processarLogin(event)" class="space-y-4 text-sm">
+                <div>
+                    <label class="block text-xs font-bold mb-1">E-mail Institucional (@escola.pr.gov.br):</label>
+                    <input type="email" id="login-email" required placeholder="seu.nome@escola.pr.gov.br" class="w-full bg-rimuru-dark border border-slate-700 p-2 rounded text-white focus:outline-none focus:border-slime-400 font-mono">
+                    <p class="text-[10px] text-slate-400 mt-1">Dica de teste: Use "professor@escola.pr.gov.br" ou "aluno.8a@escola.pr.gov.br"</p>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold mb-1">Senha:</label>
+                    <input type="password" required value="123456" class="w-full bg-rimuru-dark border border-slate-700 p-2 rounded text-white focus:outline-none focus:border-slime-400">
+                </div>
+                <button type="submit" class="w-full bg-slime-500 hover:bg-slime-600 text-rimuru-dark font-bold py-2 rounded transition-colors">
+                    Liberar Acesso
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800 bg-rimuru-dark/40 py-4 text-center text-xs text-slate-500">
+        <p>&copy; 2026 C.E.C.M. Princesa Izabel. Desenvolvido sob a proteção de Rimuru Tempest.</p>
+    </footer>
+
+    <!-- LÓGICA DE PROGRAMAÇÃO INTERATIVA -->
+    <script>
+        // Estado Global Simulado
+        let usuarioLogado = null; // { email, tipo: 'professor'|'aluno', turma: '8°A' etc }
+        let turmaAberta = null;
+
+        // Base de dados simulada na memória (padrão)
+        const projetosMock = {
+            '8°A': [{ autor: 'ana.8a@escola.pr.gov.br', titulo: 'Maquete de Energia Sustentável', desc: 'Projeto interdisciplinar de Ciências sobre captação eólica.' }],
+            '9°A': [{ autor: 'pedro.9a@escola.pr.gov.br', titulo: 'Infográfico Revolução Industrial', desc: 'Linha do tempo interativa desenvolvida na aula de História.' }]
+        };
+
+        function abrirModal() {
+            document.getElementById('login-modal').style.display = 'flex';
+        }
+
+        function fecharModal() {
+            document.getElementById('login-modal').style.display = 'none';
+        }
+
+        function processarLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('login-email').value.trim().toLowerCase();
+
+            if (!email.endsWith('@escola.pr.gov.br')) {
+                alert('Acesso negado. Use um e-mail institucional @escola.pr.gov.br!');
+                return;
+            }
+
+            // Identifica se é professor ou aluno por palavras-chave ou padrão simulado
+            if (email.includes('professor') || email.includes('prof')) {
+                usuarioLogado = { email, tipo: 'professor', turma: 'TODAS' };
+            } else {
+                // Tenta extrair a turma pelo e-mail ou define uma padrão (ex: 8°A)
+                let turmaDetectada = '8°A';
+                if (email.includes('9a')) turmaDetectada = '9°A';
+                if (email.includes('9b')) turmaDetectada = '9°B';
+                if (email.includes('1a')) turmaDetectada = '1°A';
+                if (email.includes('2a')) turmaDetectada = '2°A';
+                
+                usuarioLogado = { email, tipo: 'aluno', turma: turmaDetectada };
+            }
+
+            atualizarInterfaceLogin();
+            fecharModal();
+            if (turmaAberta) verTurma(turmaAberta);
+        }
+
+        function atualizarInterfaceLogin() {
+            const area = document.getElementById('login-area');
+            if (usuarioLogado) {
+                const badgeColor = usuarioLogado.tipo === 'professor' ? 'bg-emerald-400' : 'bg-slime-400';
+                area.innerHTML = `
+                    <span class="w-2.5 h-2.5 ${badgeColor} rounded-full"></span>
+                    <span class="text-sm text-white font-mono">${usuarioLogado.email} (${usuarioLogado.tipo})</span>
+                    <button onclick="logout()" class="text-red-400 hover:text-red-300 text-xs ml-2 underline">Sair</button>
+                `;
+            } else {
+                area.innerHTML = `
+                    <span class="w-2.5 h-2.5 bg-red-500 rounded-full animate-ping"></span>
+                    <span class="text-sm text-slate-300">Não autenticado</span>
+                    <button onclick="abrirModal()" class="bg-slime-500 hover:bg-slime-600 text-rimuru-dark font-bold px-3 py-1 rounded text-xs transition-colors">
+                        Fazer Login
+                    </button>
+                `;
+            }
+        }
+
+        function logout() {
+            usuarioLogado = null;
+            atualizarInterfaceLogin();
+            fecharTurma();
+        }
+
+        function verTurma(nomeTurma) {
+            turmaAberta = nomeTurma;
+            document.getElementById('area-projeto').classList.remove('hidden');
+            document.getElementById('nome-turma-selecionada').innerText = nomeTurma;
+            
+            const statusPermissao = document.getElementById('status-permissao');
+            const formEnvio = document.getElementById('form-envio');
+
+            if (!usuarioLogado) {
+                statusPermissao.className = "p-3 mb-4 rounded bg-amber-950/40 border border-amber-500/30 text-xs text-amber-300";
+                statusPermissao.innerText = "🛑 Você precisa fazer login com seu @escola.pr.gov.br para visualizar ou enviar projetos nesta turma.";
+                formEnvio.classList.add('hidden');
+                document.getElementById('lista-projetos').innerHTML = '<p class="text-sm text-slate-500">Conteúdo bloqueado para visitantes.</p>';
+                return;
+            }
+
+            // Se logado
+            let podePostar = false;
+            if (usuarioLogado.tipo === 'professor') {
+                statusPermissao.className = "p-3 mb-4 rounded bg-emerald-950/40 border border-emerald-500/30 text-xs text-emerald-300";
+                statusPermissao.innerText = "🛡️ Modo Professor: Você possui acesso livre para gerenciar e postar nesta turma.";
+                podePostar = true;
+            } else if (usuarioLogado.tipo === 'aluno' && usuarioLogado.turma === nomeTurma) {
+                statusPermissao.className = "p-3 mb-4 rounded bg-slime-950/40 border border-slime-500/30 text-xs text-slime-300";
+                statusPermissao.innerText = "✅ Acesso Liberado: Você é aluno desta turma e pode submeter seu projeto.";
+                podePostar = true;
+            } else {
+                statusPermissao.className = "p-3 mb-4 rounded bg-red-950/40 border border-red-500/30 text-xs text-red-300";
+                statusPermissao.innerText = `🔒 Acesso Restrito: Seu perfil de aluno pertence à turma ${usuarioLogado.turma}. Você só pode ler os posts aqui.`;
+                podePostar = false;
+            }
+
+            if (podePostar) {
+                formEnvio.classList.remove('hidden');
+            } else {
+                formEnvio.classList.add('hidden');
+            }
+
+            renderizarProjetos(nomeTurma);
+        }
+
+        function fecharTurma() {
+            turmaAberta = null;
+            document.getElementById('area-projeto').classList.add('hidden');
+        }
+
+        function renderizarProjetos(turma) {
+            const container = document.getElementById('lista-projetos');
+            const lista = projetosMock[turma] || [];
+
+            if (lista.length === 0) {
+                container.innerHTML = '<p class="text-sm text-slate-500 py-2">Nenhum projeto postado nesta turma ainda. Seja o primeiro!</p>';
+                return;
+            }
+
+            container.innerHTML = lista.map((proj, idx) => `
+                <div class="bg-rimuru-dark p-4 rounded-lg border border-slate-800 flex justify-between items-start gap-4">
+                    <div>
+                        <h5 class="text-base font-bold text-white">${proj.titulo}</h5>
+                        <p class="text-sm text-slate-300 mt-1">${proj.desc}</p>
+                        <div class="text-[11px] text-slate-500 mt-2 font-mono">Enviado por: ${proj.autor}</div>
+                    </div>
+                    ${usuarioLogado && usuarioLogado.tipo === 'professor' ? `
+                        <button onclick="removerProjeto('${turma}', ${idx})" class="text-xs bg-red-950 text-red-400 border border-red-800 px-2 py-1 rounded hover:bg-red-900 transition-colors">
+                            Excluir
+                        </button>
+                    ` : ''}
+                </div>
+            `).join('');
+        }
+
+        function submeterProjeto(event) {
+            event.preventDefault();
+            if (!turmaAberta || !usuarioLogado) return;
+
+            const titulo = document.getElementById('proj-titulo').value.trim();
+            const desc = document.getElementById('proj-desc').value.trim();
+
+            if (!projetosMock[turmaAberta]) {
+                projetosMock[turmaAberta] = [];
+            }
+
+            projetosMock[turmaAberta].unshift({
+                autor: usuarioLogado.email,
+                titulo: titulo,
+                desc: desc
+            });
+
+            // Limpa form
+            document.getElementById('proj-titulo').value = '';
+            document.getElementById('proj-desc').value = '';
+
+            renderizarProjetos(turmaAberta);
+        }
+
+        function removerProjeto(turma, idx) {
+            if (confirm("Deseja mesmo remover esse projeto do feed da escola?")) {
+                projetosMock[turma].splice(idx, 1);
+                renderizarProjetos(turma);
+            }
+        }
+    </script>
+</body>
+</html>
